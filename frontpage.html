@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3SMB - Online Shopping</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="./favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="./favicon_io/site.webmanifest">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/f7a2f6039e.js" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!--<script src="./cart.js"></script>-->
+    <style>
+        /*header*/
+        body{
+            width: 100%;
+            height: 100%;
+            font-family: "Anta", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            display: block;
+            padding-top: 92px;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        header{
+            z-index: 1;
+            width: 100%;
+            height: 92px;
+            background-color: rgb(234, 249, 255);
+            box-sizing: border-box;
+            padding: 10px 10px 5px 0px;
+            position: fixed;
+            top: 0;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.353);
+        }
+        .navbar{
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            column-gap: 10px;
+        }
+        #logo{
+            width: 50px;
+        }
+        .logo{
+            text-decoration: none;
+            color: black;
+            font-size: xx-large;
+            font-weight: 900;
+            margin-left: 20px;
+        }
+        ul{
+            list-style: none;
+        }
+        .user{
+            cursor: pointer;
+            position: relative;
+            padding: 5px 10px 5px 5px;
+            background-color: inherit;
+            border: none;
+        }
+        .user-list a{
+            text-decoration: none;
+            color: black;
+            font-size: large;
+        }
+        .user-menu{
+            position: absolute;
+            border: 1px solid black;
+            background-color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            right: 10px;
+            width: 125px;
+            display: none;
+            animation: slidedown .3s ease;
+        }
+        .user-menu li{
+            display: block;
+        }
+        .user-list a:hover{
+            color: blue;
+        }
+        .menu li,.menu a{
+            display: inline-block;
+        }
+        .menu li{
+            position: relative;
+        }
+        .menu a{
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px 30px;
+            border-radius: 5px;
+            transition: background-color .2s ease;
+        }
+        .menu a:hover{
+            /*background-color: rgb(0, 157, 255);*/
+            color: rgb(8, 0, 255);
+        }
+        .menu a i{
+            margin: 0 10px;
+        }
+        .submenu1{
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            left: 0;
+            width: 150px;
+            display: none;
+            animation: slidedown .9s ease;
+        }
+        .submenu1 li{
+            left: -32.5px;
+            width: 150px;
+        }
+        .submenu2{
+            position: absolute;
+            width: 150px;
+            left: 100%;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            top: 0;
+            display: none;
+            animation: slideright .9s ease;
+        }
+        .menu li:hover .submenu1, .submenu1 li:hover .submenu2{
+            display: block;
+        }
+        #log{
+            background-color: rgba(0, 81, 255, 0.734);
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: larger;
+            letter-spacing: 0.5px;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 1px 10px 5px 10px;
+            width: 100px;
+            height: 50px;
+            transition: 0.5s;
+        }
+        #log:hover{
+            background-color: blue;
+            transform: scale(1.1);
+        }
+        @keyframes slidedown {
+            0%{
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100%{
+                opacity: 1;
+                transform: none;
+            }
+        }
+        @keyframes slideright {
+            0%{
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            100%{
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .two{
+            visibility: visible;
+        }
+        @media only screen and (min-width: 714px) and (max-width: 1020px){
+            header{
+                height: 120px;
+            }
+            body{
+                padding-top: 120px;
+            }
+        }
+        @media only screen and (max-width: 890px){
+            .two{
+                visibility: hidden;
+            }
+            header{
+                height: 92px;
+            }
+            header .navbar{
+                height: 70px;
+                width: 100%;
+                display: grid;
+                grid-gap: 10px;
+                grid-template: 
+                'a c'
+                'b .'
+                ;
+            }
+            .one{
+                grid-area: a;
+            }
+            .two{
+                grid-area: b;
+            }
+            .three{
+                grid-area: c;
+            }
+            header .navbar .one{
+                width: 200px;
+            }
+            header .navbar .three{
+                width: 150px;
+            }
+            .menu li{
+                display: block;
+                width: 150px;
+            }
+            .submenu1{
+                width: 150px;
+                left: 100%;
+                top: -1%;
+                animation: slideright .9s ease;
+            }
+            .submenu2{
+                left: 100%;
+                width: 150px;
+            }
+            .user-bar{
+                padding-right: 50px;
+            }
+            .user-bar .bar{
+                display: block;
+            }
+        }
+        .navbar li:nth-of-type(1){
+            flex: 1;
+        }
+        .navbar li:nth-of-type(2){
+            flex: 25;
+        }
+        .navbar li:nth-of-type(3){
+            flex: 1;
+        }
+        .bar{
+            cursor: pointer;
+            width: 40px;
+            height: 60px;
+            color: black;
+            background-color: inherit;
+            border: none;
+            font-weight: bolder;
+            font-size: 40px;
+            display: none;
+        }
+        .bar:hover{
+            color:blue;
+        }
+        /*header*/
+
+        .carousel{
+            height: 600px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        video{
+            height: 600px;
+            width: 100%;
+            object-fit: fill;
+            float: right;
+        }
+        #title{
+            border:1px solid;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: inherit;
+            position: absolute;
+            color: rgb(255, 255, 255);
+            margin: 50px 0 0 20px;
+            background-image:linear-gradient(rgba(0, 0, 0, 0.316),rgba(128, 128, 128, 0.262));
+        }
+        #title h2{
+            font-family:fantasy;
+            letter-spacing: 1px;
+        }
+        #title p{
+            font-style: italic;
+        }
+        .divs h2{
+            margin: 30px 0 0 30px;
+        }
+        .card-container{
+            position: relative;
+            margin: 0 10px 0 10px;
+            padding: 0 10px 0 5px;
+            height: 520px;
+            display: flex;
+            align-items: center;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+        }
+        .card-container::-webkit-scrollbar{
+            display: none;
+        }
+        .card{
+            flex: none;
+            padding: 10px;
+            position: relative;
+            width: 250px;
+            height: 440px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 0 10px;
+            transition: 0.5s;
+            display: flex;
+            flex-direction: column;
+            row-gap: 10px;
+            justify-content: center;
+            text-align: center;
+        }
+        .card h4{
+            flex: 1;
+        }
+        .card:hover{
+            transform: scale(1.1);
+        }
+        .card-container .card img{
+            object-fit: scale-down;
+            width: 100%;
+            height: 240px;
+        }
+        .buynow,.atc{
+            display: flex;
+            flex-direction: row;
+            column-gap: 10px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+        }
+        .card button:hover{
+            color: blue;
+        }
+        .buynow{
+            background-color: rgb(214, 214, 214);
+        }
+        .atc{
+            background-color: rgb(234, 249, 255);
+        }
+        .emos{
+            margin-bottom: 40px;
+            align-items: center;
+            width: 100%;
+            height: 100px;
+            display: flex;
+            padding-left: 70px;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+            position: relative;
+        }
+        .emos::-webkit-scrollbar{
+            display: none;
+        }
+        .emos-in{
+            margin:0 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #ficons{
+            margin: 0 15px;
+            width: 50px;
+        }
+        .video-card-container{
+            position: relative;
+            height: 500px;
+            display: flex;
+            overflow-x: auto;
+            overflow-y: visible;
+            scroll-behavior: smooth;
+            margin: 30px 20px;
+        }
+        .video-card-container::-webkit-scrollbar{
+            display: none;
+        }
+        .card-video{
+            height: 350px;
+            width: 600px;
+            border: 1px solid;
+            border-radius: 10px;
+            margin: 0 20px;
+        }
+        .vid-img{
+            height: 200px;
+            position: fixed;
+        }
+        .video-card{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            row-gap: 10px;
+        }
+        .video-card .btns{
+            display: flex;
+            column-gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .btns .buynow, .btns .atc{
+            width: 200px;
+        }
+        .btns .buynow:hover, .btns .atc:hover{
+            color: blue;
+        }
+        .scrolling-img-container {
+            margin: 20px 0;
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            /*background-color: rgba(255, 236, 183, 0.334);*/
+            background-color: rgb(234, 249, 255);
+        }
+        .scrolling-img-inner {
+            display: flex;
+            padding: 5px 20px;
+        }
+        .scrolling-img {
+            display: flex;
+            padding: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        .scrolling-img-item {
+            object-fit: cover;
+            padding: 5px 20px;
+        }
+        .scrolling-img-inner>div {
+            animation: var(--direction) var(--marquee-speed) 1s linear infinite;
+        }
+        .scrolling-img-container:hover .scrolling-img-inner>div {
+            animation-play-state: paused;
+        }
+        #brands{
+            width: 160px;
+        }
+        .l{
+            height: 90px;
+        }
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        /*footer*/
+        footer{
+            background-color: rgba(0, 0, 0, 0.623);
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            padding: 20px 20px 10px 20px;
+        }
+        .fa-brands{
+            width: 30px;
+        }
+        #flinks{
+            text-decoration: none;
+            color: white;
+        }
+        #ft-p{
+            font-weight: lighter;
+        }
+        #ft{
+            height: 300px;
+            width: 100%;
+            display: flex;
+        }
+        #ft-in{
+            height: 100%;
+            width: 33.32%;
+        }
+        #ft-img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        #ft-in a{
+            text-decoration: none;
+            color: white;
+        }
+        .fa i{
+            color: white;
+        }
+        .cart{
+            border: 1px solid black;
+            width: 94%;
+            height: 50%;
+            margin: 3%;
+            border-radius: 20px;
+            position: fixed;
+            z-index: 5;
+            background-color: white;
+            display: none;
+            box-shadow: 0px 0px 50px 2px black;
+        }
+        .cart::-webkit-scrollbar{
+            display: none;
+        }
+        .cart{
+            overflow-y: scroll;
+            text-align: center;
+            border: 1px solid black;
+        }
+        .cartImg > img{
+            width: 200px;
+            border: none;
+            margin: 50px;
+        }
+        .cartImg > div1{
+            
+            color: black;
+            margin: 100px;
+            font-weight: bolder;
+            font-size: x-large;
+        }
+        .cartImg > div2{
+           color: black;
+           margin: 100px;
+           font-weight: bolder;
+           font-size: large;
+        }
+        .cartImg > button{
+            margin: 50px;
+            background-color: white;
+            padding: 2px;
+         }
+         #title1{
+            padding: 0;
+            margin: 0;
+            margin-left: 3%;
+            text-align: center;
+         }
+         .title{
+           font-weight: bolder;
+           margin-top: 10px;
+           text-align: center;
+         }
+         .buy{
+            border: 1px solid black;
+            width: 54%;
+            height: 50%;
+            margin: 3%;
+            border-radius: 20px;
+            position: fixed;
+            z-index: 5;
+            background-color: white;
+            box-shadow: 0px 0px 50px 2px black;
+            margin-left: 20%;
+            display: none;
+            overflow-y: scroll;
+         }
+         .buy::-webkit-scrollbar{
+            display: none;
+         }
+         #title2 > div{
+            margin: 0% 5% 4% 5%;
+            box-shadow: 0.1px 0.1px 5px grey;
+            padding: 10px;
+         }
+         #title2 > div > button{
+            margin-left: 60%;
+            margin-top: -10%;
+         }
+         #toastBox{
+            position: fixed;
+            top: 65px;
+            right: 30px;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 2;
+        }
+        .toast2{
+            width: 300px;
+            height: 80px;
+            background: #fff;
+            font-weight: 500;
+            margin: 0 0 15px 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            position: relative;
+            transform: translateX(100%);
+            animation: moveleft 0.09s linear forwards;
+        }
+        @keyframes moveleft {
+            100%{
+                transform: translateX(0);
+            }
+        }
+        .toast2 i{
+            margin: 0 20px;
+            font-size: 35px;
+            color: green;
+        }
+        .toast2::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 5px;
+            background: green;
+            animation: anim 2s linear forwards;
+        }
+        @keyframes anim {
+            100%{
+                width: 0;
+            }
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            let c=0,d=0;
+            $(".user").click(function(){
+                if(c%2==0)
+                    $(".user-menu").show();
+                else
+                    $(".user-menu").hide();
+                c++;
+            });
+            $(".bar").click(function(){
+                if(d%2==0){
+                    $(".two").css("visibility","visible");
+                    $(".navbar").height("292px");
+                    $("header").height("310px");
+                    $("body").css("padding-top","325px");
+                }
+                else{
+                    $(".two").css("visibility","hidden");
+                    $(".navbar").height("52px");
+                    $("header").height("77px");
+                    $("body").css("padding-top","92px");
+                    $(".cart").hide();
+                }
+                d++;
+            });
+            $("#vid1").dblclick(function(){
+                $("#vid1").trigger('pause');
+            });
+            $("#vid1").click(function(){
+                $("#vid1").trigger('play');
+            });
+            $("#vid2").dblclick(function(){
+                $("#vid2").trigger('pause');
+            });
+            $("#vid2").click(function(){
+                $("#vid2").trigger('play');
+            });
+            $("#vid3").dblclick(function(){
+                $("#vid3").trigger('pause');
+            });
+            $("#vid3").click(function(){
+                $("#vid3").trigger('play');
+            });
+            /**/
+            let user_records=new Array();
+            $("#bt1,#bt2,#bt3,#bt4,#bt5,#bt6,#bt7,#bt8,#bt9,#bt10,#bt11,#bt12,#bt13,#bt14,#bt15,#bt16,#bt17,#bt18,#bt19,#bt20,#bt21,#bt22,#bt23,#bt24,#bt25").click(function(){
+                if(localStorage.getItem("log")==="true"){
+                    user_records=JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("users")):[]
+                    var j=0;
+                    user_record.forEach(i => {
+                        if(i['name']==$(this).val())
+                            j+=1;
+                        })
+                    if(j==0){
+                    user_records.push({
+                        "name":$(this).val()
+                     })}
+                    localStorage.setItem("users",JSON.stringify(user_records));
+                    localStorage.setItem('a',$(this).val());
+                    buy();
+                    location.href="./transaction.html";
+                }
+                else{
+                    location.href="./loginform.html";
+                }
+            });
+            let a=0;
+            $(".cartdiv").click(function(){
+                if(a%2==0)
+                    $(".cart").show();
+                else
+                    $(".cart").hide();
+                a++;
+            });
+            $(".myordersdiv").click(function(){
+                if(a%2==0)
+                    $(".buy").show();
+                else
+                    $(".buy").hide();
+                a++;
+            });
+        });
+    </script>
+    <script>
+        function logout(){
+            alert("logged out successfully");
+            localStorage.setItem("log",false);
+            localStorage.setItem("user","");
+            document.getElementById("users").innerHTML=localStorage.getItem("user");
+        }
+        window.onload=function(){
+            buy();
+        }
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("users").textContent =localStorage.getItem("user");
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li class="one">
+                    <ul style="display: flex; justify-content:center; align-items:center">
+                        <li><img id="logo" src="./img/IMG_20240225_125356-removebg-preview.png"></li>
+                        <li><label><a class="logo" href="./frontpage.html">3SMB</a></label></li>
+                    </ul>
+                </li>
+                <li class="two"><ul class="menu">
+                        <li><a href="./frontpage.html"><i class="fa-solid fa-house"></i>Home</a></li>
+                        <li><a href="./categories.html"><i class="fa-solid fa-store"></i>Shop Now</a>
+                        <li><a class="myordersdiv" style="cursor: pointer;"><i class="fa-solid fa-bag-shopping"></i>My Orders</a></li>
+                        <li><a class="cartdiv" style="cursor: pointer;"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
+                    </ul>
+                </li>
+                <li id="users"></li>
+                <li class="three"><ul class="user-list">
+                    <li>
+                        <ul class="user-bar" style="display: flex; justify-content:center; align-items:center;">
+                            <li><button class="user"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 18.305c-.261-.586-.789-.991-1.871-1.241-2.293-.529-4.428-.993-3.393-2.945 3.145-5.942.833-9.119-2.489-9.119-3.388 0-5.644 3.299-2.489 9.119 1.066 1.964-1.148 2.427-3.393 2.945-1.084.25-1.608.658-1.867 1.246-1.405-1.723-2.251-3.919-2.251-6.31 0-5.514 4.486-10 10-10s10 4.486 10 10c0 2.389-.845 4.583-2.247 6.305z"/>
+                                </svg></button></li>
+                            <li><button class="bar" style="margin-left: 15px;">≡</button></li>
+                        </ul>
+                        <ul class="user-menu">
+                            <li><a href="./loginform.html">Login</a></li>
+                            <hr>
+                            <li><a href="./frontpage.html" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div id="toastBox"></div>
+    <div class="cart" id="cart">
+        <div class="title">CART</div>
+        <hr>
+        <label id="label1"></label>
+        <div id="title1"></div>
+    </div>
+    <div class="buy" id="buy">
+        <div class="title">MY ORDERS</div>
+        <hr>
+        <label id="label2"></label>
+        <div id="title2"></div>
+    </div>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div id="title">
+                <h2>Realme Smart TV</h2>
+                <p>At ₹25000</p>
+            </div>
+            <video id="vid1" muted loop autoplay>
+                <source src="./vid/maserati_30s-32c3b5eb9d.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item">
+            <div id="title" style="color: black; background-image:linear-gradient(rgba(255, 255, 255, 0.31),rgba(128, 128, 128, 0.266))">
+                <h2>Galaxy S24 Ultra</h2>
+                <p>At ₹75000</p>
+            </div>
+            <video id="vid2" muted loop autoplay>
+                <source src="./vid/HOME_E3_Main-KV_1440x640_pc_LTR.webm" type="video/mp4">
+            </video>
+          </div>
+          <div class="carousel-item">
+            <div id="title">
+                <h2>Samsung Q-Symphony</h2>
+                <p>At ₹35000</p>
+            </div>
+            <video id="vid3" muted loop autoplay>
+                <source src="./vid/in-feature--nbsp-537677193.webm" type="video/mp4">
+            </video>
+          </div>
+        </div>
+    </div>
+    <div class="divs">
+        <h2>New Launches</h2>
+        <div class="card-container">
+            <div class="card" id="item">
+                <img src="./img/samsungs24.jpg" class="card-img-top" alt="...">
+                <h4>Samsung Galaxy S24</h4>
+                <p>₹1,29,999</p>
+                <button class="buynow" value="<h4>Samsung Galaxy S24</h4><br><b>1,29,999</b>" id="bt1">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item1">
+                <img src="./img/realme12.jpg" class="card-img-top" alt="...">
+                <h4>Realme 12 5g</h4>
+                <p>₹21,999</p>
+                <button class="buynow" value="<h4>Realme 12 5g</h4><br><b>₹21,999</b>" id="bt2">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item1)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item2">
+                <img src="./img/hp15s.jpg" class="card-img-top" alt="...">
+                <h4>HP 15s Intel Core i3</h4>
+                <p>₹37,999</p>
+                <button class="buynow" value="<h4>HP 15s Intel Core i3</h4><br><b>₹37,999</b>" id="bt3">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item2)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card"  id="item3">
+                <img src="./img/lenovo3.jpg" class="card-img-top" alt="...">
+                <h4>Lenovo IdeaPad Slim 3</h4>
+                <p>₹22,999</p>
+                <button class="buynow" value="<h4>Lenovo IdeaPad slim 3</h4><br><b>₹22,999</b>" id="bt4">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item3)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item4">
+                <img src="./img/mia.jpg" class="card-img-top" alt="...">
+                <h4>Mi A Series 80cm</h4>
+                <p>₹12,999</p>
+                <button class="buynow" value="<h4>Mi A Series 80cm</h4><br><b>₹12,999</b>" id="bt5">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item4)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item5">
+                <img src="./img/boatbar.jpg" class="card-img-top" alt="...">
+                <h4>Boat Aavante Bar</h4>
+                <p>₹6,299</p>
+                <button class="buynow" value="<h4>Boat Aavante Bar</h4><br><b>₹6,299</b>" id="bt6">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item5)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item6">
+                <img src="./img/boultz40.jpg" class="card-img-top" alt="...">
+                <h4>Boult Z40</h4>
+                <p>₹999</p>
+                <button class="buynow" value="<h4>Boult Z40</h4><br><b>₹999</b>" id="bt7">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item6)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item7">
+                <img src="./img/boatimmortal100.jpg" class="card-img-top" alt="...">
+                <h4>Boat Immortal</h4>
+                <p>₹999</p>
+                <button class="buynow" value="<h4>Boat Immortal</h4><br><b>₹999</b>" id="bt8">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item7)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item8">
+                <img src="./img/boultcraft.jpg" class="card-img-top" alt="...">
+                <h4>Boult Craft</h4>
+                <p>₹1,199</p>
+                <button class="buynow" value="<h4>Boult Craft</h4><br><b>₹1,199</b>" id="bt9">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item8)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item9">
+                <img src="./img/boatultima.jpg" class="card-img-top" alt="...">
+                <h4>Boult Ultima Connect</h4>
+                <p>₹1,299</p>
+                <button class="buynow" value="<h4>Boult Ultimia Connect</h4><br><b>₹1,299</b>" id="bt10">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item9)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+    </div>
+    <img src="./img/gallery.png" style="width: 100%; height: 300px; position: relative;">
+    <div class="divs">
+        <h2>Best Deals</h2>
+        <div class="card-container">
+            <div class="card" id="item10">
+                <img src="./img/samsungf145g.jpg" class="card-img-top" alt="...">
+                <h4 id="pname">Samsung Galaxy F14</h4>
+                <p id="pprice">₹10,490</p>
+                <button class="buynow" value="<h4>Samsung Galaxy F14</h4><br><b>₹10,490</b>" id="bt11">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item10)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item11">
+                <img src="./img/realme11.jpg" class="card-img-top" alt="...">
+                <h4>Realme 11 5g</h4>
+                <p>₹14,999</p>
+                <button class="buynow" value="<h4>Realme 11 5g</h4><br><b>₹14,999</b>" id="bt12">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item11)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item12">
+                <img src="./img/asus15.jpg" class="card-img-top" alt="...">
+                <h4>Asus Vivobook 15</h4>
+                <p>₹28,990</p>
+                <button class="buynow" value="<h4>sus Vivobook 15</h4><br><b>₹28,990</b>" id="bt13">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item12)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item13">
+                <img src="./img/samsung4.jpg" class="card-img-top" alt="...">
+                <h4>Samsung Galaxy Book 4</h4>
+                <p>₹75,999</p>
+                <button class="buynow" value="<h4>Samsung Galaxy Book 4</h4><br><b>₹75,999</b>" id="bt14">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item13)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item14">
+                <img src="./img/lg.jpg" class="card-img-top" alt="...">
+                <h4>LG 80cm</h4>
+                <p>₹15,490</p>
+                <button class="buynow" value="<h4>LG 80cm</h4><br><b>₹15,490</b>" id="bt15">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item14)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item15">
+                <img src="./img/jblgo.jpg" class="card-img-top" alt="...">
+                <h4>JGL Go</h4>
+                <p>₹1,899</p>
+                <button class="buynow" value="<h4>JGL Go</h4><br><b>₹1,899</b>" id="bt16">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item15)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item16">
+                <img src="./img/noisevs102.jpg" class="card-img-top" alt="...">
+                <h4>Noise Buds VS102</h4>
+                <p>₹899</p>
+                <button class="buynow" value="<h4>Noise Buds VS102</h4><br><b>₹899</b>" id="bt17">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item16)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item17">
+                <img src="./img/realmet100.jpg" class="card-img-top" alt="...">
+                <h4>Realme Techlife</h4>
+                <p>₹1,499</p>
+                <button class="buynow" value="<h4>Realme Techlife</h4><br><b>₹1,499</b>" id="bt18">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item17)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item18">
+                <img src="./img/firebolttrise.jpg" class="card-img-top" alt="...">
+                <h4>Fire-Boltt Rise Luxe</h4>
+                <p>₹1,599</p>
+                <button class="buynow" value="<h4>ire-Boltt Rise Luxe</h4><br><b>1,599</b>" id="bt19">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item18)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+            <div class="card" id="item19">
+                <img src="./img/noiseicon.jpg" class="card-img-top" alt="...">
+                <h4>Noise Icon Buzz</h4>
+                <p>₹1,199</p>
+                <button class="buynow" value="<h4>Noise Icon Buzz</h4><br><b>₹1,199</b>" id="bt20">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart(item19)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="emos">
+        <div class="emos-in">
+            <img src="./img/free-shipping.png" id="ficons">
+            <h3>Free Shipping</h3>
+        </div>
+        <div class="emos-in">
+            <img src="./img/security.png" id="ficons">
+            <h3>1 Year Warranty</h3>
+        </div>
+        <div class="emos-in">
+            <img src="./img/replacement.png" id="ficons">
+            <h3>7-Days Replacement</h3>
+        </div>
+        <div class="emos-in">
+            <img src="./img/bill.png" id="ficons">
+            <h3>GST Billing</h3>
+        </div>
+    </div>
+    <div class="video-card-container">
+        <div class="video-card" id="item20">
+            <div class="vid-img"><img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/l/8/d/-original-imagqadpnygfnn2v.jpeg?q=70" class="vid-img"></div>
+            <video  id="v1" src="./vid/realme 11 Pro Series 5G _ Premium Vegan Leather Design.mp4" autoplay muted loop class="card-video"></video>
+            <h4>Realme 11 Pro Series 5G</h4>
+            <p>₹25000</p>
+            <div class="btns">
+                <button class="buynow" value="<h4>Realme 11 Pro Series 5G</h4><br><b>₹25000</b>" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart1(item20)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+        <div class="video-card" id="item21">
+            <div class="vid-img"><img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/x/s/y/qa65qn800ckxxl-samsung-original-imagzvuycffg9hrw.jpeg?q=70" class="vid-img"></div>
+            <video  id="v2" src="./vid/Neo QLED 8K_ More Wow than Ever.mp4" autoplay muted loop class="card-video"></video>
+            <h4>Samsung Neo QLED 8K</h4>
+            <p>₹35000</p>
+            <div class="btns">
+                <button class="buynow" value="<h4>Samsung Neo QLED 8K</h4><br><b>₹35000</b>" id="bt22">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart1(item21)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+        <div class="video-card" id="item22">
+            <div class="vid-img"><img src="https://rukminim2.flixcart.com/image/416/416/xif0q/speaker/z/1/x/-original-imagsywg5ydhmhkh.jpeg?q=70&amp;crop=false" class="vid-img"></div>
+            <video  id="v3" src="./vid/Mi Soundbar - Xiaomi.mp4" autoplay muted loop class="card-video"></video>
+            <h4>Mi Soundbar - Xiaomi</h4>
+            <p>₹10000</p>
+            <div class="btns">
+                <button class="buynow" value="<h4>Mi Soundbar - Xiaomi</h4><br><b>₹10000</b>" id="bt23">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart1(item22)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+        <div class="video-card" id="item23">
+            <div class="vid-img"><img src="https://rukminim2.flixcart.com/image/312/312/xif0q/screen-guard/screen-guard/d/p/j/iqoo-z7s-tempered-glass-elvana-original-imagpv7nhcjbcr8c.jpeg?q=70" class="vid-img"></div>
+            <video  id="v4" src="./vid/iQOO 11 Promotional Video.mp4" autoplay muted loop class="card-video"></video>
+            <h4>IQOO 11</h4>
+            <p>₹20000</p>
+            <div class="btns">
+                <button class="buynow" value="<h4>IQOO 11</h4><br><b>₹20000</b>" id="bt24">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart1(item23)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+        <div class="video-card" id="item24">
+            <div class="vid-img"><img src="https://rukminim2.flixcart.com/image/312/312/l1b1oy80/computer/x/r/s/book-prime-thin-and-light-laptop-realme-original-imagcwmcxdwr4rvh.jpeg?q=70" class="vid-img"></div>
+            <video  id="v5" src="./vid/realme Book (Slim) _ Designed To Empower.mp4" autoplay muted loop class="card-video"></video>
+            <h4>Realme Book (Slim)</h4>
+            <p>₹50000</p>
+            <div class="btns">
+                <button class="buynow" value="<h4>Realme Book (Slim)</h4><br><b>₹50000</b>" id="bt25">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="atc" onclick="addtocart1(item24)">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="scrolling-img-container">
+        <div class="scrolling-img-inner" style="--marquee-speed: 20s; --direction:scroll-left" role="marquee">
+            <div class="scrolling-img">
+                <div class="scrolling-img-item"><img src="./img/Samsung.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Realme.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/IQOO.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/MI.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Vivo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Oppo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Apple.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Lenovo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/HP.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Dell.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Acer.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Asus.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Sony.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/LG.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Boat.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Boult.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/FireBoltt.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Noise.png" id="brands"></div>
+            </div>
+            <div class="scrolling-img">
+                <div class="scrolling-img-item"><img src="./img/Samsung.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Realme.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/IQOO.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/MI.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Vivo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Oppo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Apple.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Lenovo.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/HP.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Dell.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Acer.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Asus.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Sony.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/LG.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Boat.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/Boult.png" id="brands" class="l"></div>
+                <div class="scrolling-img-item"><img src="./img/FireBoltt.png" id="brands"></div>
+                <div class="scrolling-img-item"><img src="./img/Noise.png" id="brands"></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div id="ft">
+            <div id="ft-in">
+                <h6 class="fa">Shop</h6>
+                <br><br>
+                <p><a href="#">Mobiles</a></p>
+                <p><a href="#">Laptops</a></p>
+                <p><a href="#">Televisions</a></p>
+                <p><a href="#">Speakers</a></p>
+                <p><a href="#">True Wireless</a></p>
+                <p><a href="#">Smart Watches</a></p>
+            </div>
+            <div id="ft-in">
+                <img src="./img/IMG_20240225_125851-removebg-preview.png" id="ft-img">
+            </div>
+            <div id="ft-in">
+                <h6 class="fa">Help</h6>
+                <br><br>
+                <p><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=3smb234@gmail.com" title="3smb234@gmail.com">Contact us</a></p>
+                <p><a href="#">Warranty & Support</a></p>
+                <p><a href="#">Return Policy</a></p>
+                <p><a href="#">FAQs</a></p>
+                <p><a href="#">Track your order</a></p>
+                <p><a href="#">Service centers</a></p>
+            </div>
+        </div>
+        <div style="height: 50px; width:400px; margin:10px" class="fa">
+            <h6>Let's get connect</h6>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <p id="ft-p"><a href="#" id="flinks">Terms & Conditions </a> | <a href="#" id="flinks"> Privacy Policy</a></p>
+        <p id="ft-p">Copyright © 2024, 3SMB. All Rights Reserved.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./cart.js"></script>
+</body>
+</html>

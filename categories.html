@@ -1,0 +1,3531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/f7a2f6039e.js" crossorigin="anonymous"></script>
+
+    <style>
+        /*header*/
+        body{
+            width: 100%;
+            height: 100%;
+            font-family: "Anta", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            display: block;
+            padding-top: 92px;
+        }
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+        header{
+            z-index: 1;
+            width: 100%;
+            height: 92px;
+            background-color: rgb(234, 249, 255);
+            box-sizing: border-box;
+            padding: 10px 10px 5px 0px;
+            position: fixed;
+            top: 0;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.353);
+        }
+        .navbar{
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            column-gap: 10px;
+        }
+        #logo{
+            width: 50px;
+        }
+        .logo{
+            text-decoration: none;
+            color: black;
+            font-size: xx-large;
+            font-weight: 900;
+            margin-left: 20px;
+        }
+        ul{
+            list-style: none;
+        }
+        .user{
+            cursor: pointer;
+            position: relative;
+            padding: 5px 10px 5px 5px;
+            background-color: inherit;
+            border: none;
+        }
+        .user-list a{
+            text-decoration: none;
+            color: black;
+            font-size: large;
+        }
+        .user-menu{
+            position: absolute;
+            border: 1px solid black;
+            background-color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            right: 10px;
+            width: 125px;
+            display: none;
+            animation: slidedown .3s ease;
+        }
+        .user-menu li{
+            display: block;
+        }
+        .user-list a:hover{
+            color: blue;
+        }
+        .menu li,.menu a{
+            display: inline-block;
+        }
+        .menu li{
+            position: relative;
+        }
+        .menu a{
+            text-decoration: none;
+            color: black;
+            display: block;
+            padding: 10px 30px;
+            border-radius: 5px;
+            transition: background-color .2s ease;
+        }
+        .menu a i{
+            margin: 0 10px;
+        }
+        .menu a:hover{
+            /*background-color: rgb(0, 157, 255);*/
+            color: rgb(8, 0, 255);
+        }
+        .submenu1{
+            position: absolute;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            left: 0;
+            width: 150px;
+            display: none;
+            animation: slidedown .9s ease;
+        }
+        .submenu1 li{
+            left: -32.5px;
+            width: 150px;
+        }
+        .submenu2{
+            position: absolute;
+            width: 150px;
+            left: 100%;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            top: 0;
+            display: none;
+            animation: slideright .9s ease;
+        }
+        .menu li:hover .submenu1, .submenu1 li:hover .submenu2{
+            display: block;
+        }
+        #log{
+            background-color: rgba(0, 81, 255, 0.734);
+            color: white;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: larger;
+            letter-spacing: 0.5px;
+            border-radius: 10px;
+            margin: 10px;
+            padding: 1px 10px 5px 10px;
+            width: 100px;
+            height: 50px;
+            transition: 0.5s;
+        }
+        #log:hover{
+            background-color: blue;
+            transform: scale(1.1);
+        }
+        @keyframes slidedown {
+            0%{
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            100%{
+                opacity: 1;
+                transform: none;
+            }
+        }
+        @keyframes slideright {
+            0%{
+                opacity: 0;
+                transform: translateX(-10px);
+            }
+            100%{
+                opacity: 1;
+                transform: none;
+            }
+        }
+        .two{
+            visibility: visible;
+        }
+        @media only screen and (min-width: 714px) and (max-width: 1020px){
+            header{
+                height: 120px;
+            }
+            body{
+                padding-top: 120px;
+            }
+        }
+        @media only screen and (max-width: 714px){
+            .two{
+                visibility: hidden;
+            }
+            header{
+                height: 92px;
+            }
+            header .navbar{
+                height: 70px;
+                width: 100%;
+                display: grid;
+                grid-gap: 10px;
+                grid-template: 
+                'a c'
+                'b .'
+                ;
+            }
+            .one{
+                grid-area: a;
+            }
+            .two{
+                grid-area: b;
+            }
+            .three{
+                grid-area: c;
+            }
+            header .navbar .one{
+                width: 200px;
+            }
+            header .navbar .three{
+                width: 150px;
+            }
+            .menu li{
+                display: block;
+                width: 150px;
+            }
+            .submenu1{
+                width: 150px;
+                left: 100%;
+                top: -1%;
+                animation: slideright .9s ease;
+            }
+            .submenu2{
+                left: 100%;
+                width: 150px;
+            }
+            .user-bar{
+                padding-right: 50px;
+            }
+            .user-bar .bar{
+                display: block;
+            }
+        }
+        .navbar li:nth-of-type(1){
+            flex: 1;
+        }
+        .navbar li:nth-of-type(2){
+            flex: 25;
+        }
+        .navbar li:nth-of-type(3){
+            flex: 1;
+        }
+        .bar{
+            cursor: pointer;
+            width: 40px;
+            height: 60px;
+            color: black;
+            background-color: inherit;
+            border: none;
+            font-weight: bolder;
+            font-size: 40px;
+            display: none;
+        }
+        .bar:hover{
+            color:blue;
+        }
+
+        /*footer*/
+        footer{
+            background-color: rgba(0, 0, 0, 0.623);
+            color: white;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            padding: 20px 20px 10px 20px;
+        }
+        .fa-brands{
+            width: 30px;
+        }
+        #flinks{
+            text-decoration: none;
+            color: white;
+        }
+        #ft-p{
+            font-weight: lighter;
+        }
+        #ft{
+            height: 300px;
+            width: 100%;
+            display: flex;
+        }
+        #ft-in{
+            height: 100%;
+            width: 33.32%;
+        }
+        #ft-img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+        #ft-in a{
+            text-decoration: none;
+            color: white;
+        }
+        .fa i{
+            color: white;
+        }
+
+        main{
+            margin: 10px;
+            display: flex;
+            width: calc(100%-20px);
+            height: 800px;
+            flex-direction: row;
+            column-gap: 10px;
+            justify-content: center;
+            align-items: center;
+        }
+        main .filter{
+            box-shadow: 0px 0px 5px 1px black;
+            border-radius: 5px;
+            height: 100%;
+            width: 250px;
+            position: relative;
+            overflow: scroll;
+        }
+        main .filter::-webkit-scrollbar{
+            display: none;
+        }
+        main .items{
+            box-shadow: 0px 0px 5px 1px black;
+            border-radius: 5px;
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+        main .items .item-list{
+            box-shadow: 0px 0px 5px 0.1px black;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            height: 260px;
+            margin: 5px;
+        }
+        main .items .item-list .btns{
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+        main .items .item-list button{
+            display: flex;
+            flex-direction: row;
+            column-gap: 10px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            padding: 0 10px;
+            font-size: large;
+            height: 50px;
+        }
+        .buynow{
+            background-color: rgb(214, 214, 214);
+        }
+        .atc{
+            background-color: rgb(234, 249, 255);
+        }
+        main .items .item-list button:hover{
+            color: blue;
+        }
+        .checked{
+            color: orange;
+        }
+        .filin{
+            margin: 30px 0;
+        }
+        .items .item-img img{
+            width: 200px;
+            height: 200px;
+        }
+        .items .item-text{
+            flex: 0.8;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+            let c=0,d=0;
+            $(".user").click(function(){
+                if(c%2==0)
+                    $(".user-menu").show();
+                else
+                    $(".user-menu").hide();
+                c++;
+            });
+            $(".bar").click(function(){
+                if(d%2==0){
+                    $(".two").css("visibility","visible");
+                    $(".navbar").height("292px");
+                    $("header").height("310px");
+                    $("body").css("padding-top","325px");
+                }
+                else{
+                    $(".two").css("visibility","hidden");
+                    $(".navbar").height("52px");
+                    $("header").height("77px");
+                    $("body").css("padding-top","92px");
+                }
+                d++;
+            });
+        });
+    </script>
+    <script>
+        function fun(item){
+            let a1=item.children[0].innerText;
+            let a2=item.children[1].innerText;
+            localStorage.setItem("a","<h4>"+a1+"</h4>"+"<br>"+"<b>"+a2+"</b>");
+            location.href="./transaction.html";
+        }
+    </script>
+    <script>
+        function atc(item1){
+            //localStorage.setItem("atc",item1);
+            addtocart(item1);
+        }
+
+        var divs=["mob-sam","mob-real","mob-redmi","mob-iqoo","mob-oppo",
+        "lap-hp","lap-dell","lap-acer","lap-asus","lap-lenovo",
+        "tv-sam","tv-real","tv-xi","tv-sony","tv-lg",
+        "speak-xi","speak-sony","speak-boat","speak-jbl",
+        "tw-boat","tw-boult","tw-noise","tw-realme",
+        "sw-boat","sw-boult","sw-noise","sw-fire"];
+        var vis=null;
+        function change(divId){
+            if(vis=divId){
+                //vis=null;
+            }
+            else{
+                vis=divId;
+            }
+            hiding();
+        }
+        function hiding(){
+            var i, divId, div;
+            for(i=0;i<divs.length;i++){
+                divId=divs[i];
+                div=document.getElementById(divId);
+                if(vis==divId){
+                    div.style.display="flex";
+                }
+                else{
+                    div.style.display="none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="navbar">
+                <li class="one">
+                    <ul style="display: flex; justify-content:center; align-items:center">
+                        <li><img id="logo" src="./img/IMG_20240225_125356-removebg-preview.png"></li>
+                        <li><label><a class="logo" href="./frontpage.html">3SMB</a></label></li>
+                    </ul>
+                </li>
+                <li class="two"><ul class="menu">
+                        <li><a href="./frontpage.html"><i class="fa-solid fa-house"></i>Home</a></li>
+                        <li><a href="#"><i class="fa-solid fa-layer-group"></i>Categories</a>
+                            <ul class="submenu1">
+                                <li><a href="#">Mobiles</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('mob-sam')">SAMSUNG</a></li>
+                                        <li><a href="#" onclick="change('mob-real')" class="realme-li">REALME</a></li>
+                                        <li><a href="#" onclick="change('mob-redmi')">REDMI</a></li>
+                                        <li><a href="#" onclick="change('mob-iqoo')">IQOO</a></li>
+                                        <li><a href="#" onclick="change('mob-oppo')">OPPO</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Laptops</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('lap-hp')">HP</a></li>
+                                        <li><a href="#" onclick="change('lap-dell')">DELL</a></li>
+                                        <li><a href="#" onclick="change('lap-acer')">ACER</a></li>
+                                        <li><a href="#" onclick="change('lap-asus')">ASUS</a></li>
+                                        <li><a href="#" onclick="change('lap-lenovo')">LENOVO</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Televisions</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('tv-sam')">SAMSUNG</a></li>
+                                        <li><a href="#" onclick="change('tv-real')">REALME</a></li>
+                                        <li><a href="#" onclick="change('tv-xi')">XIAOMI</a></li>
+                                        <li><a href="#" onclick="change('tv-sony')">SONY</a></li>
+                                        <li><a href="#" onclick="change('tv-lg')">LG</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Speakers</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('speak-xi')">XIAOMI</a></li>
+                                        <li><a href="#" onclick="change('speak-sony')">SONY</a></li>
+                                        <li><a href="#" onclick="change('speak-boat')">BOAT</a></li>
+                                        <li><a href="#" onclick="change('speak-jbl')">JBL</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">True Wireless</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('tw-boat')">BOAT</a></li>
+                                        <li><a href="#" onclick="change('tw-boult')">BOULT</a></li>
+                                        <li><a href="#" onclick="change('tw-noise')">NOISE</a></li>
+                                        <li><a href="#" onclick="change('tw-realme')">REALME</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Smart Watches</a>
+                                    <ul class="submenu2">
+                                        <li><a href="#" onclick="change('sw-boat')">BOAT</a></li>
+                                        <li><a href="#" onclick="change('sw-boult')">BOULT</a></li>
+                                        <li><a href="#" onclick="change('sw-noise')">NOISE</a></li>
+                                        <li><a href="#" onclick="change('sw-fire')">FIRE BOLTT</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="#"><i class="fa-solid fa-bag-shopping"></i>My Orders</a></li>
+                        <li><a href="#"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
+                    </ul>
+                </li>
+                <li class="three"><ul class="user-list">
+                    <li>
+                        <ul class="user-bar" style="display: flex; justify-content:center; align-items:center;">
+                            <li><button class="user"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+                                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 18.305c-.261-.586-.789-.991-1.871-1.241-2.293-.529-4.428-.993-3.393-2.945 3.145-5.942.833-9.119-2.489-9.119-3.388 0-5.644 3.299-2.489 9.119 1.066 1.964-1.148 2.427-3.393 2.945-1.084.25-1.608.658-1.867 1.246-1.405-1.723-2.251-3.919-2.251-6.31 0-5.514 4.486-10 10-10s10 4.486 10 10c0 2.389-.845 4.583-2.247 6.305z"/>
+                                </svg></button></li>
+                            <li><button class="bar" style="margin-left: 15px;">≡</button></li>
+                        </ul>
+                        <ul class="user-menu">
+                            <li><a href="./loginform.html">Login</a></li>
+                            <hr>
+                            <li><a href="./frontpage.html" onclick="logout()">Logout</a></li>
+                        </ul>
+                    </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="mob-sam">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list" id="item1">
+                <div class="item-img">
+                    <img src="./img/samsungs24.jpg" alt="">
+                </div>
+                <div class="item-text" id="i1">
+                    <h4>Samsung Galaxy S24</h4>
+                    <p>₹1,29,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i1)" >Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="./img/samsungf145g.jpg" alt="">
+                </div>
+                <div class="item-text" id="i2">
+                    <h4>Samsung Galaxy F14</h4>
+                    <p>₹10,490</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i2)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/6/2/5/galaxy-m14-5g-sm-m146b-samsung-original-imagzwrqnpzujxks.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i3">
+                    <h4>Samsung Galaxy M14 5G</h4>
+                    <p>₹12,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i3)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="mob-real" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="./img/realme11.jpg" alt="">
+                </div>
+                <div class="item-text" id="i4">
+                    <h4>Realme 11 5g</h4>
+                    <p>₹14,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i4)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="./img/realme12.jpg" alt="">
+                </div>
+                <div class="item-text" id="i5">
+                    <h4>Realme 12 5g</h4>
+                    <p>₹21,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i5)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/h/h/d/-original-imags487gaqqhcea.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i6">
+                    <h4>Realme c53</h4>
+                    <p>₹10,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i6)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="mob-redmi" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/p/x/p/-original-imagxg47kjmy9qym.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i7">
+                    <h4>Redmi 13c</h4>
+                    <p>₹8,699</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i7)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/i/u/n/-original-imagwds6gyyhsw63.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i8">
+                    <h4>Redmi A2</h4>
+                    <p>₹5,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i8)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/e/a/g/-original-imags37h4prxjazz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i9">
+                    <h4>Redmi 12</h4>
+                    <p>₹9,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i9)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="mob-iqoo" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/r/x/w/-original-imagg7zqqywe5hjk.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i10">
+                    <h4>IQOO Z6 Lite 5g</h4>
+                    <p>₹13,780</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i10)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/q/b/u/z7s-5g-iqz7s-iqoo-original-imagpud6mdn3cvqr.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i11">
+                    <h4>IQOO Z7s 5g</h4>
+                    <p>₹16,122</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i11)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/z/v/j/neo-7-pro-i2217-iqoo-original-imagrhfnek2gpxnt.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i12">
+                    <h4>IQOO neo 7 pro</h4>
+                    <p>₹32,948</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i12)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="mob-oppo" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/b/m/e/-original-imaguy4b7uchxevz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i13">
+                    <h4>Oppo A18</h4>
+                    <p>₹9,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i13)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/g/u/d/reno-11-5g-cph2599-oppo-original-imagwxdsh2zjfpdt.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i14">
+                    <h4>Oppo Reno 11 5g</h4>
+                    <p>₹29,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i14)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/mobile/d/j/v/-original-imags7tyxfjhvz2h.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i15">
+                    <h4>Oppo A58</h4>
+                    <p>₹12,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i15)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="lap-hp" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/h/a/o/-original-imagykgpg4rt5kxm.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i16">
+                    <h4>HP 15s Intel Core i3</h4>
+                    <p>₹37,290</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i16)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/j/s/m/-original-imagykgpjswsfggf.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i17">
+                    <h4>HP AMD Ryzen 5 Hexa Core</h4>
+                    <p>₹38,350</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i17)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/r/w/t/240-g9-business-laptop-hp-original-imagyt8hc8m2qx87.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i18">
+                    <h4>HP G9 Intel Core i3</h4>
+                    <p>₹35,000</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i18)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="lap-dell" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/l1fc0i80/computer/9/5/r/inspiron-3525-thin-and-light-laptop-dell-original-imagczzfezyd7tqs.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i19">
+                    <h4>DELL Intel Core i3 12th Gen</h4>
+                    <p>₹34,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i19)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/z/v/u/-original-imagynwxbpas3sxh.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i20">
+                    <h4>DELL Intel Core i5 11th Gen</h4>
+                    <p>₹42,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i20)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/9/g/9/inspiron-3520-laptop-dell-original-imagtegwwhwk9ghn.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i21">
+                    <h4>DELL Inspiron 15 Intel i5</h4>
+                    <p>₹52,200</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i21)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="lap-acer" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/a/x/l/-original-imagqbud3jqmhdet.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i22">
+                    <h4>Acer Aspire 3 Intel Core i5 12th</h4>
+                    <p>₹45,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i22)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/y/l/p/-original-imagqmqjv5cyvbup.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i23">
+                    <h4>Acer Extensa AMD Ryzen 5 Quad Core</h4>
+                    <p>₹33,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i23)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/z/c/r/-original-imagy2u2n3hhnaah.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i24">
+                    <h4>Acer Aspire 3 14 Metal Body Intel Core i3</h4>
+                    <p>₹33,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i24)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="lap-asus" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/r/e/f/-original-imagrgprbhchwgve.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i25">
+                    <h4>Asus Vivobook 15 Intel Core i3 11th Gen</h4>
+                    <p>₹29,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i25)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/j/t/b/-original-imagpxgqjeghkq7b.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i26">
+                    <h4>Asus Vivobook 15 Intel Core i5 12th Gen</h4>
+                    <p>₹41,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i26)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/v/y/z/-original-imagtucnqsqpbvk6.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i27">
+                    <h4>Asus TUF Gaming F15 i3 11th Gen</h4>
+                    <p>₹64,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i27)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="lap-lenovo" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/f/o/t/-original-imaguyhz7cyftguh.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i28">
+                    <h4>Lenovo IdeaPad Slim 3 i5 12th Gen</h4>
+                    <p>₹47,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i28)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/7/3/c/-original-imagtzwvygkwvbex.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i29">
+                    <h4>Lenovo IdeaPad Slim 1 AMD Ryzen 5</h4>
+                    <p>₹36,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i29)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/computer/j/d/o/v15-g4-thin-and-light-laptop-lenovo-original-imagq57gsgyxxasy.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i30">
+                    <h4>Lenovo V15 AMD Ryzen 3 Quad Core</h4>
+                    <p>₹27,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i30)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tv-sam" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/x/8/a/-original-imagttjpuyzsbzud.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i31">
+                    <h4>Samsung 80 cm HD</h4>
+                    <p>₹14,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i31)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/a/b/z/ua43t5450akxxl-samsung-original-imagtew8twpzcfrf.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i32">
+                    <h4>Samsung 108 cm Full HD</h4>
+                    <p>₹25,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i32)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/1/z/i/-original-imagyk8ttgzxvs2s.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i33">
+                    <h4>Samsung Crystal Vision 4K</h4>
+                    <p>₹31,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i33)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tv-real" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/kulk9zk0/television/a/k/g/rmv2101-realme-original-imag7zh4etze62zy.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i34">
+                    <h4>Realme Neo 80 cm HD</h4>
+                    <p>₹11,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i34)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/h/a/r/-original-imaghgphdj9fsvzt.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i35">
+                    <h4>Realme 80 cm HD</h4>
+                    <p>₹13,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i35)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/l3uhvgw0/television/x/q/x/-original-imageuxkcg2fbdkg.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i36">
+                    <h4>Realme 100.3 cm Full HD</h4>
+                    <p>₹19,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i36)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tv-xi" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/m/z/d/-original-imagu436a6scgpxv.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i37">
+                    <h4>Xiaomi OLED Vision 138.8 cm 4K</h4>
+                    <p>₹74,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i37)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/5/w/e/-original-imagu436uugmgge6.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i38">
+                    <h4>Mi X Pro 108 cm Ultra HD</h4>
+                    <p>₹32,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i38)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/b/s/o/-original-imagt86kchfhpwgz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i39">
+                    <h4>Mi A Series 80 cm HD</h4>
+                    <p>₹12,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i39)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tv-sony" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/9/c/v/-original-imagvgcgp2hgxs6n.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i40">
+                    <h4>Sony Bravia X64L 108 cm Ultra HD</h4>
+                    <p>₹40,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i40)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/y/0/0/-original-imagvgcge6n7ewzc.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i41">
+                    <h4>Sony Bravia X75L 138.8 cm Ultra HD</h4>
+                    <p>₹59,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i41)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/6/g/p/-original-imagvgcjagmhmxfz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i42">
+                    <h4>Sony Bravia 108 cm Ultra HD</h4>
+                    <p>₹37,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i42)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tv-lg" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/0/j/5/-original-imagzmeyjuvxbuqe.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i43">
+                    <h4>LG 80 cm HD</h4>
+                    <p>₹15,490</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i43)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/xif0q/television/n/r/r/-original-imagzrrjge4guafs.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i44">
+                    <h4>LG UR7500 108 cm Ultra HD</h4>
+                    <p>₹32,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i44)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/312/312/kqidx8w0/television/g/f/x/oled48a1ptz-lg-original-imag4g64zdwxd7xj.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i45">
+                    <h4>LG OLED A1 Series 121 cm</h4>
+                    <p>₹71,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i45)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="speak-xi" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/u/w/2/-original-imaggsduymajghgx.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i46">
+                    <h4>Mi Portable Bluetooth Speaker</h4>
+                    <p>₹2,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(i46)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/l4yi7bk0/speaker/9/e/x/-original-imagfqxvrhbyffrz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i47">
+                    <h4>Mi with Google Assistant Smart Speaker</h4>
+                    <p>₹2,391</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(47)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/u/g/u/-original-imagrzjrdbhjsvgz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i48">
+                    <h4>Mi Fort S48 with Subwoofer</h4>
+                    <p>₹3,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(48)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="speak-sony" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/jvmpci80/speaker/home-audio-speaker/w/h/5/sony-sa-d40-original-imaffmj7yuzjzyhg.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i49">
+                    <h4>Sony SA-D40 80 W Bluetooth</h4>
+                    <p>₹10,450</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(4)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/s/4/6/-original-imagz6kn77uzz9t3.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i50">
+                    <h4>Sony HT-S20R 5.1ch Home Theatre</h4>
+                    <p>₹17,250</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(50)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/q/0/k/-original-imagrc9huqenzmsf.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i51">
+                    <h4>Sony SRS-XB100 Portable Super-Compact</h4>
+                    <p>₹3,990</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(51)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="speak-boat" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/kingqkw0-0/speaker/mobile-tablet-speaker/s/8/i/stone-350-boat-original-imafyebfuaumdezs.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i52">
+                    <h4>Boat Stone 350 10 W Bluetooth Speaker</h4>
+                    <p>₹1,699</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(52)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/kw5ag7k0/speaker/m/2/2/-original-imag8w2vzphcypwr.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i53">
+                    <h4>Boat Aavante Bar 500</h4>
+                    <p>₹1,599</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(53)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/t/x/d/-original-imagtmpepmm4n4qd.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i54">
+                    <h4>Boat Stone 190 5 W Bluetooth Speaker</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(54)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="speak-jbl" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/l27wtjk0/speaker/i/4/e/-original-imagdhhg2f7zjbt7.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i55">
+                    <h4>JBL Go Essential with Rich Bass</h4>
+                    <p>₹1,699</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(55)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/speaker/w/s/j/-original-imagj2jvdnfywpad.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i56">
+                    <h4>JBL Partybox 110</h4>
+                    <p>₹27,969</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(56)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/kvvad8w0/speaker/l/o/z/-original-imag8nymv9bezfkw.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i57">
+                    <h4>JBL Charge 5 with 20Hr Playtime</h4>
+                    <p>₹14,999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(57)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tw-boat" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/3/p/h/-original-imagtapyyc6awuzq.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i58">
+                    <h4>Boat Immortal 131 with Beast Mode</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(58)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/8/2/m/-original-imagz5z5jshnhvrp.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i59">
+                    <h4>Boat Airdopes Supreme AI ENx Tech</h4>
+                    <p>₹1,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(59)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/o/d/r/-original-imagpgwsm6zgtsrj.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i60">
+                    <h4>Boat Airdopes 161 with 40 Hours Playback</h4>
+                    <p>₹999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(60)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tw-boult" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/x/4/9/-original-imagtr2nezygmu4f.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i61">
+                    <h4>Boult Z40 Pro with 100H Battery Quad Mic ENC</h4>
+                    <p>₹1,599</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(61)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/k/a/3/-original-imagxaxaxgjzrcfe.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i62">
+                    <h4>Boult W40 with Quad Mic ENC</h4>
+                    <p>₹1,399</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(62)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/z/l/l/-original-imagty9c5pmq8tdt.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i63">
+                    <h4>Boult Astra with Quad Mic ENC</h4>
+                    <p>₹1,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(63)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tw-noise" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/k/q/t/-original-imagtmdttcuj9xsb.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i64">
+                    <h4>Noise Buds VS102 Pro with ANC</h4>
+                    <p>₹1,799</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(64)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/b/x/u/-original-imagpgv5f4yxbjks.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i65">
+                    <h4>Noise Buds Trance with 45 Hrs Playtime</h4>
+                    <p>₹999</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(65)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/k/i/o/-original-imagp6skdxptyrjt.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i66">
+                    <h4>Noise Buds VS120 with 50 Hrs Playtime 11mm Driver</h4>
+                    <p>₹</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(66)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="tw-realme" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/j/t/c/-original-imaghbdup9jbrdzh.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i67">
+                    <h4>Realme Techlife Buds T100 with 28 Hrs Playback</h4>
+                    <p>₹1,399</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(67)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/m/a/c/-original-imagrddwvkykfwtz.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i68">
+                    <h4>Realme Buds Wireless 3 with 30dB ANC</h4>
+                    <p>₹1,699</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(68)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/headphone/v/p/m/-original-imagtmtdshpuasbs.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i69">
+                    <h4>Realme Wireless 2S Bluetooth Headset</h4>
+                    <p>₹1,499</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(69)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="sw-boat" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/h/b/v/-original-imagqscmtjayzfjf.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i70">
+                    <h4>Boat Ultima Connect with 1.83" HD Display</h4>
+                    <p>₹1,149</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(70)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/400/400/l3ahpjk0/smartwatch/l/n/f/-original-imagegyh8dmdxrwh.jpeg?q=50" alt="">
+                </div>
+                <div class="item-text" id="i71">
+                    <h4>Boat Wave Neo with 1.69 inch , 2.5D Curved Display</h4>
+                    <p>₹1,099</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(71)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/b/x/b/-original-imagpp92dhsbyydf.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i72">
+                    <h4>Boat Storm Connect Plus with 1.91" HD Display</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(72)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="sw-boult" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/x/m/3/-original-imagnc55hfmahnsy.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i73">
+                    <h4>Boult Cosmic 1.69 inch Display</h4>
+                    <p>₹1,199</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(73)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/p/k/l/-original-imagxaythkfzz8qa.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i74">
+                    <h4>Boult Craft 1.83" HD Display, BT Calling</h4>
+                    <p>₹1,099</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(74)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/b/a/o/-original-imagqz56hxkgyxdn.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i75">
+                    <h4>Boult Striker+ 1.39" HD, BT Calling</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(75)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="sw-noise" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/f/e/u/-original-imagkjtjkxk2kapw.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i76">
+                    <h4>Noise Loop 1.85'' Display with Advanced Bluetooth Calling</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(76)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/8/0/2/-original-imagrzjahvy88v6r.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i77">
+                    <h4>Noise Thrive 1.85'' Display with Bluetooth Calling</h4>
+                    <p>₹1,299</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(77)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/3/t/n/-original-imagtdqkvrkrq6s8.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i78">
+                    <h4>Noise Crew 1.38" Round Display with Bluetooth Calling</h4>
+                    <p>₹1,399</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(78)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="sw-fire" style="display: none;">
+        <div class="filter">
+            <div class="filin">
+                <ul>
+                    <li><h4>Prices</h4>
+                        <li><input type="checkbox"><font> Under ₹500</font></li>
+                        <li><input type="checkbox"><font> ₹500 - ₹5000</font></li>
+                        <li><input type="checkbox"><font> ₹5000 - ₹10000</font></li>
+                        <li><input type="checkbox"><font> ₹10000 - ₹20000</font></li>
+                        <li><input type="checkbox"><font> Above ₹20000</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Colors</h4>
+                        <li><input type="radio"><font  style="color: red;"> Red</font></li>
+                        <li><input type="radio"><font  style="color: green;"> Green</font></li>
+                        <li><input type="radio"><font  style="color: black;"> Black</font></li>
+                        <li><input type="radio"><font  style="color: orange;"> Orange</font></li>
+                        <li><input type="radio"><font  style="color: blue;"> Blue</font></li>
+                        <li><input type="radio"><font  style="color: Purple;"> Purple</font></li>
+                    </li>
+                    <br>
+                    <li><h4>Ratings</h4>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                        <li style="cursor: pointer;">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span> & Up</span>
+                        </li>
+                    </li>
+                    <br>
+                    <li><h4>Discounts</h4>
+                        <li><input type="checkbox"><font> 50% & more</font></li>
+                        <li><input type="checkbox"><font> 40% & more</font></li>
+                        <li><input type="checkbox"><font> 30% & more</font></li>
+                        <li><input type="checkbox"><font> 20% & more</font></li>
+                        <li><input type="checkbox"><font> 10% & more</font></li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="items">
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/x/1/g/-original-imagsamebh3vtkwq.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i79">
+                    <h4>Fire-Boltt Talk 1.39"Bluetooth Calling with SpO2</h4>
+                    <p>₹1,599</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(79)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/kyhlfgw0/smartwatch/l/d/y/-original-imagaptbu8tc9baj.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i80">
+                    <h4>Fire-Boltt Ninja Pro Max 1.6" SpO2</h4>
+                    <p>₹1,099</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(80)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+            <div class="item-list">
+                <div class="item-img">
+                    <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/l/w/o/-original-imagn22ty6sr38pp.jpeg?q=70" alt="">
+                </div>
+                <div class="item-text" id="i81">
+                    <h4>Fire-Boltt Blizzard 1.28" Luxury watch with BT Calling</h4>
+                    <p>₹2,199</p>
+                </div>
+                <div class="btns">
+                    <button class="buynow" onclick="fun(81)" id="bt21">Buy Now<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="atc">Add To Cart<i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="ft">
+            <div id="ft-in">
+                <h6 class="fa">Shop</h6>
+                <br><br>
+                <p><a href="#">Mobiles</a></p>
+                <p><a href="#">Laptops</a></p>
+                <p><a href="#">Televisions</a></p>
+                <p><a href="#">Speakers</a></p>
+                <p><a href="#">True Wireless</a></p>
+                <p><a href="#">Smart Watches</a></p>
+            </div>
+            <div id="ft-in">
+                <img src="./img/IMG_20240225_125851-removebg-preview.png" id="ft-img">
+            </div>
+            <div id="ft-in">
+                <h6 class="fa">Help</h6>
+                <br><br>
+                <p><a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=3smb234@gmail.com" title="3smb234@gmail.com">Contact us</a></p>
+                <p><a href="#">Warranty & Support</a></p>
+                <p><a href="#">Return Policy</a></p>
+                <p><a href="#">FAQs</a></p>
+                <p><a href="#">Track your order</a></p>
+                <p><a href="#">Service centers</a></p>
+            </div>
+        </div>
+        <div style="height: 50px; width:400px; margin:10px" class="fa">
+            <h6>Let's get connect</h6>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        </div>
+        <p id="ft-p"><a href="#" id="flinks">Terms & Conditions </a> | <a href="#" id="flinks"> Privacy Policy</a></p>
+        <p id="ft-p">Copyright © 2024, 3SMB. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
